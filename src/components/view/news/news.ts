@@ -1,13 +1,13 @@
 import './news.css';
 
 class News {
-    draw(data) {
-        const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
+    draw(data: any) {
+        const news = data.length >= 10 ? data.filter((_item: any, idx: number) => idx < 10) : data;
 
-        const fragment = document.createDocumentFragment();
-        const newsItemTemp = document.querySelector('#newsItemTemp');
+        const fragment: DocumentFragment = document.createDocumentFragment();
+        const newsItemTemp: any = document.querySelector('#newsItemTemp');
 
-        news.forEach((item, idx) => {
+        news.forEach((item: any, idx: number) => {
             const newsClone = newsItemTemp.content.cloneNode(true);
 
             if (idx % 2) newsClone.querySelector('.news__item').classList.add('alt');
@@ -30,7 +30,9 @@ class News {
             fragment.append(newsClone);
         });
 
+        // @ts-ignore
         document.querySelector('.news').innerHTML = '';
+        // @ts-ignore
         document.querySelector('.news').appendChild(fragment);
     }
 }
